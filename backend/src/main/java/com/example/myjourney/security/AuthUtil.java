@@ -26,22 +26,21 @@ public class AuthUtil {
     }
 
     public String generateAccessToken(User user) {
-        return Jwts.builder() 
-                    .subject(user.getUsername())
-                    .claim("userId", user.getId().toString())
-                    .issuedAt(new Date())
-                    .expiration(new Date(System.currentTimeMillis() + 1000*60*10))
-                    .signWith(getSecretKey())
-                    .compact();
+        return Jwts.builder()
+                .subject(user.getEmail())
+                .claim("userId", user.getId().toString())
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + 1000*60*10))
+                .signWith(getSecretKey())
+                .compact();
     }
 
-    public String getUsernameFromToken(String token) {
-            Claims claims = Jwts.parser()
-                                .verifyWith(getSecretKey())
-                                .build()
-                                .parseSignedClaims(token)
-                                .getPayload();
-            return claims.getSubject();
+    public String getEmailFromToken(String token) {
+        Claims claims = Jwts.parser()
+                .verifyWith(getSecretKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+        return claims.getSubject();
     }
-
 }

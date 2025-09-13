@@ -38,12 +38,13 @@ public class JWTAuthFilter extends OncePerRequestFilter {
                 return;
             }
             String token = requestTokenHeader.split("Bearer")[1];
-            String username = aUtil.getUsernameFromToken(token);
+            String email = aUtil.getEmailFromToken(token);
 
-            if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                User user = userRepository.findByUsername(username).orElseThrow();
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                User user = userRepository.findByEmail(email).orElseThrow();
+                UsernamePasswordAuthenticationToken authenticationToken =
+                        new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
             filterChain.doFilter(request, response);
         } catch (Exception ex) {
