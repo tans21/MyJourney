@@ -32,7 +32,7 @@ public class AuthService {
         User user = (User) authentication.getPrincipal();
         String token = authUtil.generateAccessToken(user);
 
-        return new LoginResponseDto(token, user.getId());
+        return new LoginResponseDto(token, user.getUserId());
     }
 
     public SignupResponseDto signup(SignUpRequestDto signupRequestDto) {
@@ -47,6 +47,6 @@ public class AuthService {
                 .build()
         );
 
-        return new SignupResponseDto(user.getId(), user.getEmail());
+        return new SignupResponseDto(user.getUserId(), user.getEmail());
     }
 }

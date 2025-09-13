@@ -12,7 +12,6 @@ import com.example.myjourney.dto.LoginRequestDto;
 import com.example.myjourney.dto.LoginResponseDto;
 import com.example.myjourney.dto.SignUpRequestDto;
 import com.example.myjourney.dto.SignupResponseDto;
-import com.example.myjourney.entity.User;
 import com.example.myjourney.security.AuthService;
 
 import lombok.RequiredArgsConstructor;
