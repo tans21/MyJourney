@@ -1,6 +1,6 @@
 function NavBar({ setShowModal }) {
   return (
-    <nav className="flex w-[100vw] h-16 justify-end-safe">
+    <nav className="fixed top-0 left-0 z-10 flex w-[100vw] h-16 justify-end-safe">
       {/* LogIn Button */}
       <div className="h-full p-2">
         <button
