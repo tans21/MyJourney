@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TravelDistanceRequestDto {
-    private String from;
-    private String to;
+    private String fromLocation;
+    private String toLocation;
 }

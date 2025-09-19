@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class MapApiUtil {
 
-    private static final String API_KEY = "Your Key"; // later move to application.properties
+    private static final String API_KEY = "your_key"; 
     private static final String URL = "https://maps.googleapis.com/maps/api/directions/json?origin=%s&destination=%s&key=%s";
 
     public double getDistanceInKm(String source, String destination) {

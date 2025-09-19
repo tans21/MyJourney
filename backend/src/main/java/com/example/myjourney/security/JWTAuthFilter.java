@@ -32,12 +32,12 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         try {
             log.info("incoming request: {}", request.getRequestURI());
 
-            final String requestTokenHeader = request.getHeader("Authorisation");
-            if(requestTokenHeader == null || !requestTokenHeader.startsWith("Bearer")) {
+            final String requestTokenHeader = request.getHeader("Authorization");
+            if(requestTokenHeader == null || !requestTokenHeader.startsWith("Bearer ")) {
                 filterChain.doFilter(request, response);
                 return;
             }
-            String token = requestTokenHeader.split("Bearer")[1];
+            String token = requestTokenHeader.substring(7).trim();
             String email = aUtil.getEmailFromToken(token);
 
             if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -48,7 +48,8 @@ public class JWTAuthFilter extends OncePerRequestFilter {
             }
             filterChain.doFilter(request, response);
         } catch (Exception ex) {
-            handlerExceptionResolver.resolveException(request, response, filterChain, ex); //filterchain = null if it not works
+            handlerExceptionResolver.resolveException(request, response, null, ex); //filterchain = null if it not works
+            return;
         }
     }
 
