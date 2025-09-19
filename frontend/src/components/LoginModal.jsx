@@ -6,9 +6,11 @@ function LoginModal({ onClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const backendUrl = "http://localhost:8080/auth";
+
   const RequestLogin = async () => {
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch(`${backendUrl}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +38,7 @@ function LoginModal({ onClose }) {
 
   const RequestRegister = async () => {
     try {
-    const response = await fetch("/api/auth/signup", {
+    const response = await fetch(`${backendUrl}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
