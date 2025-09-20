@@ -41,8 +41,9 @@ public class User implements UserDetails {
 
     private String password;
 
+    @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TravelDistance> travelDistances = new ArrayList<>();
+    private List<Travel> travel = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class TravelDistanceRequestDto {
     private String fromLocation;
     private String toLocation;
+    private int days;
 }

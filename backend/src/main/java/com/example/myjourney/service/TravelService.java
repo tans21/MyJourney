@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.myjourney.dto.TravelDistanceRequestDto;
 import com.example.myjourney.dto.TravelDistanceResponseDto;
-import com.example.myjourney.entity.TravelDistance;
+import com.example.myjourney.entity.Travel;
 import com.example.myjourney.entity.User;
 import com.example.myjourney.repository.TravelDistanceRepository;
 import com.example.myjourney.repository.UserRepository;
@@ -32,10 +32,11 @@ public class TravelService {
 
         double distance = mapApiUtil.getDistanceInKm(dto.getFromLocation(), dto.getToLocation());
 
-        TravelDistance travel = TravelDistance.builder()
+        Travel travel = Travel.builder()
                 .fromLocation(dto.getFromLocation())
                 .toLocation(dto.getToLocation())
                 .distanceKm(distance)
+                .days(dto.getDays())
                 .user(managedUser)
                 .build();
 
