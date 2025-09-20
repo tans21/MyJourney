@@ -3,20 +3,22 @@ package com.example.myjourney.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
-@Table(name = "travel_itinerary")
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
+@Table(name = "travel_itinerary")
 public class TravelItinerary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long itineraryId;
 
-    @Column(length = 2000) 
+    @Lob
+    @Column
     private String planDetails;
 
     @ManyToOne(fetch = FetchType.LAZY)

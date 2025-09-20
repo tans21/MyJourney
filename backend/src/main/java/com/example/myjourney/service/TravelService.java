@@ -8,7 +8,7 @@ import com.example.myjourney.dto.TravelDistanceRequestDto;
 import com.example.myjourney.dto.TravelDistanceResponseDto;
 import com.example.myjourney.entity.Travel;
 import com.example.myjourney.entity.User;
-import com.example.myjourney.repository.TravelDistanceRepository;
+import com.example.myjourney.repository.TravelRepository;
 import com.example.myjourney.repository.UserRepository;
 import com.example.myjourney.utils.MapApiUtil;
 
@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TravelService {
 
-    private final TravelDistanceRepository travelDistanceRepository;
+    private final TravelRepository travelDistanceRepository;
     private final UserRepository userRepository;
     private final MapApiUtil mapApiUtil; 
 

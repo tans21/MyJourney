@@ -33,7 +33,7 @@ public class MapApiUtil {
             JsonNode legs = root.path("routes").get(0).path("legs").get(0);
             double distanceMeters = legs.path("distance").path("value").asDouble();
 
-            return distanceMeters / 1000.0; // convert to km
+            return distanceMeters / 1000.0; 
 
         } catch (Exception e) {
             e.printStackTrace();
